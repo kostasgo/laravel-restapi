@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\OperationalExpenses;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('vessels')->insert(
+            ['name' => 'Black Pearl', 'imo_number' => 'tbp202313224']);
+        DB::table('vessels')->insert(
+            ['name' => 'The Flying Dutch', 'imo_number' => 'tfd202398347']);
+        DB::table('vessels')->insert(
+            ['name' => 'Queen Anne\'s Revenge', 'imo_number' => 'qar202350748']);
     }
 }

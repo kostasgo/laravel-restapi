@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Vessel;
-use App\Http\Requests\StoreVesselRequest;
-use App\Http\Requests\UpdateVesselRequest;
+use App\Models\OperationalExpenses;
+use App\Http\Requests\StoreOperationalExpensesRequest;
+use App\Http\Requests\UpdateOperationalExpensesRequest;
+use App\Http\Controllers\Controller;
 
-class VesselController extends Controller
+class OperationalExpensesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class VesselController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVesselRequest $request)
+    public function store(StoreOperationalExpensesRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class VesselController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vessel $vessel)
+    public function show(OperationalExpenses $operationalExpenses)
     {
         //
     }
@@ -43,7 +44,7 @@ class VesselController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vessel $vessel)
+    public function edit(OperationalExpenses $operationalExpenses)
     {
         //
     }
@@ -51,7 +52,7 @@ class VesselController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVesselRequest $request, Vessel $vessel)
+    public function update(UpdateOperationalExpensesRequest $request, OperationalExpenses $operationalExpenses)
     {
         //
     }
@@ -59,7 +60,7 @@ class VesselController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vessel $vessel)
+    public function destroy(OperationalExpenses $operationalExpenses)
     {
         //
     }

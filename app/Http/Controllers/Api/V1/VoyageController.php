@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\OperationalExpenses;
-use App\Http\Requests\StoreOperationalExpensesRequest;
-use App\Http\Requests\UpdateOperationalExpensesRequest;
+use App\Models\Voyage;
+use App\Http\Requests\StoreVoyageRequest;
+use App\Http\Requests\UpdateVoyageRequest;
+use App\Http\Controllers\Controller;
 
-class OperationalExpensesController extends Controller
+class VoyageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class OperationalExpensesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOperationalExpensesRequest $request)
+    public function store(StoreVoyageRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class OperationalExpensesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OperationalExpenses $operationalExpenses)
+    public function show(Voyage $voyage)
     {
         //
     }
@@ -43,7 +44,7 @@ class OperationalExpensesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OperationalExpenses $operationalExpenses)
+    public function edit(Voyage $voyage)
     {
         //
     }
@@ -51,7 +52,7 @@ class OperationalExpensesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOperationalExpensesRequest $request, OperationalExpenses $operationalExpenses)
+    public function update(UpdateVoyageRequest $request, Voyage $voyage)
     {
         //
     }
@@ -59,7 +60,7 @@ class OperationalExpensesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OperationalExpenses $operationalExpenses)
+    public function destroy(Voyage $voyage)
     {
         //
     }

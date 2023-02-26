@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Voyage;
-use App\Http\Requests\StoreVoyageRequest;
-use App\Http\Requests\UpdateVoyageRequest;
+use App\Models\Vessel;
+use App\Http\Requests\StoreVesselRequest;
+use App\Http\Requests\UpdateVesselRequest;
+use App\Http\Controllers\Controller;
 
-class VoyageController extends Controller
+class VesselController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Vessel::all();
     }
 
     /**
@@ -27,7 +28,7 @@ class VoyageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVoyageRequest $request)
+    public function store(StoreVesselRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class VoyageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Voyage $voyage)
+    public function show(Vessel $vessel)
     {
         //
     }
@@ -43,7 +44,7 @@ class VoyageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Voyage $voyage)
+    public function edit(Vessel $vessel)
     {
         //
     }
@@ -51,7 +52,7 @@ class VoyageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVoyageRequest $request, Voyage $voyage)
+    public function update(UpdateVesselRequest $request, Vessel $vessel)
     {
         //
     }
@@ -59,7 +60,7 @@ class VoyageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Voyage $voyage)
+    public function destroy(Vessel $vessel)
     {
         //
     }
