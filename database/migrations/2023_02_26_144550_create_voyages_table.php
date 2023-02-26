@@ -21,7 +21,6 @@ return new class extends Migration
             $table->decimal('revenues', 8, 2);
             $table->decimal('expenses', 8, 2);
             $table->decimal('profit', 8, 2);
-            $table->timestamps();
         });
     }
 

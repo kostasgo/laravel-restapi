@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('vessel_id');
             $table->date('date');
             $table->decimal('expenses', 8, 2);
-            $table->timestamps();
         });
     }
 

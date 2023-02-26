@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('imo_number');
-            $table->timestamps();
         });
     }
 
