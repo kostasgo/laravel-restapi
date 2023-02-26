@@ -29,7 +29,7 @@ class VoyageController extends Controller
      */
     public function store(StoreVoyageRequest $request)
     {
-        //
+        return new VoyageResource(Voyage::create($request->all()));
     }
 
     /**
