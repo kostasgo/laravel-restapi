@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Vessel;
+use App\Http\Controllers\Controller;
 use App\Models\Voyage;
 use App\Http\Requests\StoreVoyageRequest;
 use App\Http\Requests\UpdateVoyageRequest;
@@ -29,7 +31,27 @@ class VoyageController extends Controller
      */
     public function store(StoreVoyageRequest $request)
     {
-        return new VoyageResource(Voyage::create($request->all()));
+        // Retrieve validated data
+        $validatedData = $request->validated();
+
+        $vessel = Vessel::find($request->vessel_id);
+        if (!$vessel) {
+            return response()->json(['error' => 'Vessel not found'], 404);
+        }
+
+        // Create the voyage record
+        $voyage = new Voyage;
+        $voyage->vessel_id = $validatedData['vessel_id'];
+        $voyage->code = str_replace(" ", "_", $vessel->name).'-'.$validatedData['start'];
+        $voyage->start = $validatedData['start'];
+        $voyage->end = $validatedData['end'];
+        $voyage->status = 'pending';
+        $voyage->revenues = $validatedData['revenues'];
+        $voyage->expenses = $validatedData['expenses'];
+        $voyage->profit = $validatedData['revenues'] - $validatedData['expenses'];
+        $voyage->save();
+
+        return response()->json(['message' => 'Voyage created successfully'], 201);
     }
 
     /**

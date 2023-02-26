@@ -22,7 +22,11 @@ class StoreVoyageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'vessel_id' => 'required|exists:vessels,id',
+            'start' => 'required|date',
+            'end' => 'date|after:start',
+            'revenues' => 'numeric',
+            'expenses' => 'numeric',
         ];
     }
 }
