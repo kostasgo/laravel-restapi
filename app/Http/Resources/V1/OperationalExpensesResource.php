@@ -17,11 +17,9 @@ class OperationalExpensesResource extends JsonResource
         return [
             'id' => $this->id,
             'vessel_id' => $this->vessel_id,
-            'code' => $this->code,
-            'start' => $this->start,
-            'end' => $this->end,
-            'expenses' => $this->id,
-            'profit' => $this->id,
+            'date' => $this->date,
+            'expenses' => $this->expenses,
+            'profit' => $this->id
         ];
     }
 }
