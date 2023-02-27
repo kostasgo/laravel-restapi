@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('operational_expenses');
+        Schema::dropIfExists('vessel_opex');
     }
 };

@@ -14,6 +14,6 @@ class Vessel extends Model
     }
 
     public function operational_expenses() {
-        return $this->hasMany(OperationalExpenses::class);
+        return $this->hasMany(VesselOpex::class);
     }
 }

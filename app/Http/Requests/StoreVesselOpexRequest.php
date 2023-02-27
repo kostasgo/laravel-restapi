@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\VesselOpex;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOperationalExpensesRequest extends FormRequest
+class StoreVesselOpexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

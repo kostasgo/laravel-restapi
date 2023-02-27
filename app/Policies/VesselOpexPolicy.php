@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\OperationalExpenses;
+use App\Models\VesselOpex;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class OperationalExpensesPolicy
+class VesselOpexPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class OperationalExpensesPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, OperationalExpenses $operationalExpenses): bool
+    public function view(User $user, VesselOpex $vesselOpex): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class OperationalExpensesPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, OperationalExpenses $operationalExpenses): bool
+    public function update(User $user, VesselOpex $vesselOpex): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class OperationalExpensesPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, OperationalExpenses $operationalExpenses): bool
+    public function delete(User $user, VesselOpex $vesselOpex): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class OperationalExpensesPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, OperationalExpenses $operationalExpenses): bool
+    public function restore(User $user, VesselOpex $vesselOpex): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class OperationalExpensesPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, OperationalExpenses $operationalExpenses): bool
+    public function forceDelete(User $user, VesselOpex $vesselOpex): bool
     {
         //
     }

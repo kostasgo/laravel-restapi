@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Models\VesselOpex;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OperationalExpensesResource extends JsonResource
+class VesselOpexResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
