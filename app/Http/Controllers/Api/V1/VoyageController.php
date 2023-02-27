@@ -42,13 +42,22 @@ class VoyageController extends Controller
         // Create the voyage record
         $voyage = new Voyage;
         $voyage->vessel_id = $validatedData['vessel_id'];
-        $voyage->code = str_replace(" ", "_", $vessel->name).'-'.$validatedData['start'];
+        $voyage->code = str_replace(" ", "_", $vessel->name).'-'.$validatedData['start']; //Creating code from vessel name and start date.
         $voyage->start = $validatedData['start'];
-        $voyage->end = $validatedData['end'];
-        $voyage->status = 'pending';
-        $voyage->revenues = $validatedData['revenues'];
-        $voyage->expenses = $validatedData['expenses'];
-        $voyage->profit = $validatedData['revenues'] - $validatedData['expenses'];
+        if($validatedData['end']){
+            $voyage->end = $validatedData['end'];
+        }
+        $voyage->status = 'pending'; // Status starts by default at 'pending'
+        if($validatedData['revenues']){
+            $voyage->revenues = $validatedData['revenues'];
+        }
+        if($validatedData['expenses']){
+            $voyage->expenses = $validatedData['expenses'];
+        }
+        if($validatedData['expenses'] && $validatedData['revenues']){ //expenses and revenues must both be present to calculate profit
+            $voyage->profit = $validatedData['revenues'] - $validatedData['expenses']; // Profit = revenues - expenses
+        }
+
         $voyage->save();
 
         return response()->json(['message' => 'Voyage created successfully'], 201);
