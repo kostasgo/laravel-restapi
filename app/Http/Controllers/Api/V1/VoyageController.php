@@ -15,7 +15,7 @@ class VoyageController extends Controller
      */
     public function index()
     {
-        //
+        return Voyage::all();
     }
 
     /**
@@ -34,6 +34,10 @@ class VoyageController extends Controller
         // Retrieve validated data
         $validatedData = $request->validated();
 
+        // Set a default value of null for non required data if it's not provided
+//        $validatedData['revenues'] = $validatedData['revenues'] ?? 0;
+//        $validatedData['expenses'] = $validatedData['expenses'] ?? 0;
+
         $vessel = Vessel::find($request->vessel_id);
         if (!$vessel) {
             return response()->json(['error' => 'Vessel not found'], 404);
@@ -41,26 +45,17 @@ class VoyageController extends Controller
 
         // Create the voyage record
         $voyage = new Voyage;
-        $voyage->vessel_id = $validatedData['vessel_id'];
+
+        $voyage->fill($validatedData);
+
         $voyage->code = str_replace(" ", "_", $vessel->name).'-'.$validatedData['start']; //Creating code from vessel name and start date.
-        $voyage->start = $validatedData['start'];
-        if($validatedData['end']){
-            $voyage->end = $validatedData['end'];
-        }
         $voyage->status = 'pending'; // Status starts by default at 'pending'
-        if($validatedData['revenues']){
-            $voyage->revenues = $validatedData['revenues'];
-        }
-        if($validatedData['expenses']){
-            $voyage->expenses = $validatedData['expenses'];
-        }
-        if($validatedData['expenses'] && $validatedData['revenues']){ //expenses and revenues must both be present to calculate profit
-            $voyage->profit = $validatedData['revenues'] - $validatedData['expenses']; // Profit = revenues - expenses
-        }
+
+        $voyage->profit = $voyage->revenues - $voyage->expenses; // Profit = revenues - expenses
 
         $voyage->save();
 
-        return response()->json(['message' => 'Voyage created successfully'], 201);
+        return response()->json($voyage);
     }
 
     /**
@@ -84,7 +79,15 @@ class VoyageController extends Controller
      */
     public function update(UpdateVoyageRequest $request, Voyage $voyage)
     {
-        //
+        $voyage->fill($request->validated());
+
+        if ($voyage->status == 'submitted') {
+            $voyage->profit = $voyage->revenues - $voyage->expenses;
+        }
+
+        $voyage->save();
+
+        return response()->json($voyage);
     }
 
     /**
