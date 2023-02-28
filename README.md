@@ -9,6 +9,7 @@ It is accepting following requests:</br>
 <li>PUT /voyages/{voyage-id}</li>
 <li>POST /vessels/{vessel-id}/vessel-opex</li>
 <li>GET /vessels/{vessel-id}/financial-report</li>
+<li>PUT /vessels/{vessel-id}|</li>
 </ul>
 
 </br></br>
