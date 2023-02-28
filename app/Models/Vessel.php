@@ -9,6 +9,8 @@ class Vessel extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'imo_number'];
+
     public function voyages() {
         return $this->hasMany(Voyage::class);
     }

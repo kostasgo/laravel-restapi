@@ -53,7 +53,10 @@ class VoyageController extends Controller
 
         $voyage->save();
 
-        return response()->json($voyage);
+        return response()->json([
+            'message' => 'Voyage created successfully.',
+            'data' => $voyage
+        ]);
     }
 
     /**
@@ -85,7 +88,10 @@ class VoyageController extends Controller
 
         $voyage->save();
 
-        return response()->json($voyage);
+        return response()->json([
+            'message' => 'Voyage updated successfully.',
+            'data' => $voyage
+        ]);
     }
 
     /**

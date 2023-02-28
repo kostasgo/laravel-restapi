@@ -29,12 +29,12 @@ class VesselOpexController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVesselOpexRequest $request, $vessel_id)
+    public function store(StoreVesselOpexRequest $request, $vesselId)
     {
         $validatedData = $request->validated();
 
         $vesselOpex = new VesselOpex();
-        $vesselOpex->vessel_id = $vessel_id;
+        $vesselOpex->vessel_id = $vesselId;
         $vesselOpex->date = $validatedData['date'];
         $vesselOpex->expenses = $validatedData['expenses'];
         $vesselOpex->save();

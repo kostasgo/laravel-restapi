@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Vessel;
+use App\Models\Voyage;
 use App\Http\Requests\StoreVesselRequest;
 use App\Http\Requests\UpdateVesselRequest;
 use App\Http\Controllers\Controller;
@@ -55,7 +56,24 @@ class VesselController extends Controller
      */
     public function update(UpdateVesselRequest $request, Vessel $vessel)
     {
-        //
+
+        $vessel->fill($request->validated());
+        $vessel->save();
+        $newName = $vessel->name;
+        $counter = 0;
+        //If name was changed, update all voyages of vessel
+        $voyages = Voyage::where('vessel_id', $vessel->id)->get();
+
+        foreach ($voyages as $voyage) {
+            $voyage->code = str_replace(" ", "_", $newName). '-' . $voyage->start;
+            $voyage->save();
+            $counter++;
+        }
+
+        return response()->json([
+            'message' => 'Vessel updated successfully. Updated '. $counter . ' voyage(s) of this vessel.',
+            'data' => $vessel
+        ]);
     }
 
     /**
