@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\VesselOpexController;
+use App\Http\Controllers\Api\V1\VesselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,6 @@ Route::group(['prefix' => 'v1', 'namespace'=> 'App\Http\Controllers\Api\V1'], fu
     Route::apiResource('vessels', VesselController::Class);
     Route::apiResource('voyages', VoyageController::Class);
     Route::post('/vessels/{vessel_id}/vessel-opex', [VesselOpexController::class, 'store']);
-
+    Route::get('/vessels/{vesselId}/financial-report', [VesselController::class, 'financialReport']);
 });
 
