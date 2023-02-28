@@ -86,7 +86,16 @@ class VoyageController extends Controller
             $voyage->profit = $voyage->revenues - $voyage->expenses;
         }
 
+        //Update the code based on the starting date
+        $vessel = Vessel::find($voyage->vessel_id);
+        if (!$vessel) {
+            return response()->json(['error' => 'Voyage appears to have a non existent vessel'], 404);
+        }
+
+        $newStart = $voyage->start;
+        $voyage->code = str_replace(" ", "_", $vessel->name).'-'.$newStart;
         $voyage->save();
+
 
         return response()->json([
             'message' => 'Voyage updated successfully.',
