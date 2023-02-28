@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\VesselOpex;
+use App\Rules\UniqueVesselOpex;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreVesselOpexRequest extends FormRequest
@@ -12,7 +13,7 @@ class StoreVesselOpexRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +24,12 @@ class StoreVesselOpexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'date' => [
+                'required',
+                'date_format:Y-m-d',
+                new UniqueVesselOpex($this->vessel_id, $this->date)
+            ],
+            'expenses' => 'required|numeric'
         ];
     }
 }

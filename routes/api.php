@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\VesselOpexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'namespace'=> 'App\Http\Controllers\Api\V1'], function(){
     Route::apiResource('vessels', VesselController::Class);
     Route::apiResource('voyages', VoyageController::Class);
-    Route::apiResource('vessel_opex', VesselOpexController::Class);
+    Route::post('/vessels/{vessel_id}/vessel-opex', [VesselOpexController::class, 'store']);
+
 });
+

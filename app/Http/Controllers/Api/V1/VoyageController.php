@@ -35,8 +35,6 @@ class VoyageController extends Controller
         $validatedData = $request->validated();
 
         // Set a default value of null for non required data if it's not provided
-//        $validatedData['revenues'] = $validatedData['revenues'] ?? 0;
-//        $validatedData['expenses'] = $validatedData['expenses'] ?? 0;
 
         $vessel = Vessel::find($request->vessel_id);
         if (!$vessel) {
